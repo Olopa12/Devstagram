@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
     public function index(User $user)
     {
-        $posts =Post::where('user_id', $user->id)->paginate(20);
+        $posts =Post::where('user_id', $user->id)->latest()->paginate(20);
 
         return view('dashboard', [
             'user' => $user,
@@ -30,13 +31,6 @@ class PostController extends Controller
             'descripcion' => 'required',
             'imagen' => 'required'
         ]);
-
-        /*Post::Create([
-            'titulo' => $request->titulo,
-            'descripcion' => $request->descripcion,
-            'imagen' => $request->imagen,
-            'user_id' => auth()->user()->id
-        ]);*/
 
         $request->user()->posts()->create([
             'titulo' => $request->titulo,
@@ -58,11 +52,17 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if($post->user_id === auth()->user()->id) {
-            dd('Si es la misma');
-        } else{
-            dd('Ni es la misma');
+        $this->authorize('delete', $post);
+        $post->delete();
+
+        //Eliminar la imagen
+        $imagne_path = public_path('uploads/' . $post->imagen);
+
+        if(File::exists($imagne_path)){
+            unlink($imagne_path);
         }
+
+        return redirect()->route('post.index', auth()->user()->username);
     }
     
 }
