@@ -62,7 +62,8 @@ class PostController extends Controller
             unlink($imagne_path);
         }
 
-        return redirect()->route('post.index', auth()->user()->username);
+        return redirect()->route('post.index', auth()->user()->username)
+        ->with('mensaje', '¡Post eliminado correctamente!');
     }
     
 }

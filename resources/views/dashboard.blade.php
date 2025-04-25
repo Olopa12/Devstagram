@@ -26,14 +26,14 @@
                 </p>
 
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{ $posts->count() }}
                     <span class="font-normal"> Posts</span>
                 </p>
             </div>
         </div>
     </div>
 
-    <section class="container mx-auto mt-10">
+    <section class="container mx-auto mt-10 p-5">
         <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
 
         @if ($posts->count())
