@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -13,7 +14,7 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RegisterController;
 
 // Página principal
-Route::get('/', fn() => view('principal'));
+Route::get('/', HomeController::class)->name('home')->middleware('auth');
 
 // ——————————————————————————
 // Autenticación

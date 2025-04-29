@@ -99,7 +99,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function followins()
+    public function followings()
     {
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
     }
