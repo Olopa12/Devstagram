@@ -5,14 +5,20 @@
 @endsection
 
 @section('contenido')
+    {{-- --------------------------------------------------------- --}}
+    {{-- Contenedor principal con imagen y formulario --}}
+    {{-- --------------------------------------------------------- --}}
     <div class=" md:flex md:gap-10 md:items-center">
+        {{-- Imagen ilustrativa --}}
         <div class=" md:w-6/12 p-5">
             <img  src="{{ asset('img/login.jpg')}}" alt="Imagen login de Usuarios"/>
         </div>
 
+        {{-- Formulario de registro --}}
         <div class=" md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
             <form action="{{ route('register') }}" method="POST" novalidate>
                 @csrf
+                {{-- Campo Nombre --}}
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre
@@ -34,6 +40,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Usuario --}}
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
                         Usuario
@@ -55,6 +62,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Email --}}
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
                         Email
@@ -76,6 +84,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Contraseña --}}
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
                         Contraseña
@@ -96,6 +105,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Confirmar Contraseña --}}
                 <div class="mb-5">
                     <label for="password_confirmation" class="mb-2 block uppercase 
                     text-gray-500 font-bold">
@@ -119,6 +129,7 @@
                     @enderror
                 </div>
 
+                {{-- Botón de envío --}}
                 <input
                     type="submit"
                     value="Crear Cuenta"

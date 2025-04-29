@@ -5,10 +5,14 @@
 @endsection
 
 @section('contenido')
+    {{-- --------------------------------------------------------- --}}
+    {{-- Contenedor principal: formulario de edición de perfil --}}
+    {{-- --------------------------------------------------------- --}}
     <div class="md:flex md:justify-center">
         <div class=" md:w1/2 bg-white shadow p-6">
             <form method="POST" action="{{ route('perfil.store') }}" enctype="multipart/form-data" class="mt-10 md:mt-0">
                 @csrf
+                {{-- Campo Username --}}
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
                         Username
@@ -30,6 +34,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Imagen de Perfil --}}
                 <div class="mb-5">
                     <label for="imagen" class="mb-2 block uppercase text-gray-500 font-bold">
                         Imagen Perfil
@@ -45,6 +50,7 @@
                     />
                 </div>
 
+                {{-- Botón Guardar Cambios --}}
                 <input
                     type="submit"
                     value="Guardar Cambios"

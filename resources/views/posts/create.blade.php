@@ -5,21 +5,28 @@
 @endsection
 
 @push('styles')
+    <!-- Dropzone CSS para subida de imágenes -->
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" 
     type="text/css" />
 @endpush
 
 @section('contenido')
+    {{-- --------------------------------------------------------- --}}
+    {{-- Contenedor principal: dropzone y formulario de publicación --}}
+    {{-- --------------------------------------------------------- --}}
     <div class="md:flex md:items-center">
+        {{-- Sección Dropzone para subir imagen --}}
         <div class="md:w-1/2 px-10">
             <form action='{{ route('imagenes.store') }}' method="POST" enctype="multipart/form-data" 
             id='dropzone' class="dropzone border-dashed border-2 w-full h-96 
             rounded flex flex-col justify-center items-center">@csrf</form>
         </div>
 
+        {{-- Formulario de datos de la publicación --}}
         <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-xl mt-10 md:mt-0">
             <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
+                {{-- Campo Título --}}
                 <div class="mb-5">
                     <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">
                         Titulo
@@ -41,6 +48,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Descripción --}}
                 <div class="mb-5">
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Descripción
@@ -61,6 +69,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Imagen Oculta --}}
                 <div>
                     <input 
                         name="imagen"
@@ -73,6 +82,7 @@
                     @enderror
                 </div>
 
+                {{-- Botón Publicar --}}
                 <input
                     type="submit"
                     value="Publicar"

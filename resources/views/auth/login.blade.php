@@ -5,19 +5,26 @@
 @endsection
 
 @section('contenido')
+    {{-- --------------------------------------------------------- --}}
+    {{-- Contenedor principal: Imagen y formulario de login --}}
+    {{-- --------------------------------------------------------- --}}
     <div class=" md:flex md:gap-10 md:items-center">
+        {{-- Imagen ilustrativa --}}
         <div class=" md:w-6/12 p-5">
             <img  src="{{ asset('img/registrar.jpg')}}" alt="Imagen Registro de Usuarios"/>
         </div>
 
+        {{-- Formulario de login --}}
         <div class=" md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
             <form method="POST" action="{{ route('login') }}" novalidate>
                 @csrf
+                {{-- Mensajes de sesión --}}
                 @if (session('mensaje'))
                     <p class=" bg-red-500 text-white my-2 rounded-lg text-sm p-2
                     text-center"> {{ session('mensaje')}} </p>
                 @endif
 
+                {{-- Campo Email --}}
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
                         Email
@@ -39,6 +46,7 @@
                     @enderror
                 </div>
 
+                {{-- Campo Contraseña --}}
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
                         Contraseña
@@ -58,10 +66,14 @@
                         text-center">{{ str_replace( 'password', 'Contraseña', $message) }}</p>
                     @enderror
                 </div>
+
+                {{-- Checkbox recordar sesión --}}
                 <div class="mb-5">
                     <input type="checkbox" name="remember">
                     <label class=" text-gray-500 font-bold text-sm">Mantener mi session abierta</label>
                 </div>
+
+                {{-- Botón Iniciar sesión --}}
                 <input
                     type="submit"
                     value="Inciar Sessión"

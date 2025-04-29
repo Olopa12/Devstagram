@@ -10,14 +10,19 @@
         @vite('resources/js/app.js')
     </head>
     <body>
+        <!-- --------------------------------------------------------- -->
+        <!-- Header: Navegación principal -->
+        <!-- --------------------------------------------------------- -->
         <header class="p-5 border-b bg-white shadow" >
             <div class="container mx-auto md:flex justify-between items-center">
                 <h1 class="text-3xl font-black">
                     <a href="{{ url('/') }}">Devstagram</a>
                 </h1>
 
+                <!-- Navegación para usuarios autenticados -->
                 @auth
                     <nav class="flex gap-4 items-center">
+                        <!-- Enlace Crear post -->
                         <a class="flex items-center gap-2 bg-white border p-2 text-gray-600 
                         rounded text-sm uppercase font-bold cursor-pointer"
                         href="{{ route('post.create') }}">
@@ -28,11 +33,13 @@
                            Crear
                         </a>
 
+                        <!-- Enlace a perfil de usuario -->
                         <a class="font-bold text-gray-600 text-sm" 
                         href="{{ route('post.index', auth()->user()->username) }}">
                         Hola: <span class="font-normal"> {{ auth()->user()->username }}</span>
                         </a>
 
+                        <!-- Formulario de cierre de sesión -->
                         <form method="POST" action=" {{ route('logout') }} ">
                             @csrf
                             <button type="submit" href="{{ route('logout') }}" class="font-bold uppercase 
@@ -41,6 +48,7 @@
                     </nav>
                 @endauth
 
+                <!-- Navegación para invitados (no autenticados) -->
                 @guest
                     <nav class="flex gap-4 items-center">
                         <a class="font-bold uppercase text-gray-600 
@@ -54,19 +62,29 @@
             </div>
         </header>
 
+        <!-- --------------------------------------------------------- -->
+        <!-- Main: Contenido principal de la página -->
+        <!-- --------------------------------------------------------- -->
         <main class="container mx-auto mt-10">
+            <!-- Título de sección dinámica -->
             <h2 class="font-black text-center text-3xl mb-10">
                 @yield('titulo')
             </h2>
 
+            <!-- Sección de contenido dinámico -->
             @yield('contenido')
         </main>
             
+        <!-- --------------------------------------------------------- -->
+        <!-- Footer: Pie de página -->
+        <!-- --------------------------------------------------------- -->
         <footer class=" text-center p-5 text-gray-500 font-bold uppercase">
             DEVSTAGRAM - TODOS LOS DERECHOS RESERVADOS 
             {{ now()->year}}
             
         </footer>
+
+        <!-- Scripts externos y stacks personalizados -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @stack('scripts')
     </body>
