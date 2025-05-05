@@ -26,7 +26,7 @@ class HomeController extends Controller
         $ids = auth()->user()->followings->pluck('id')->toArray();
 
         // Consultar posts de esos usuarios, ordenados por fecha descendente, paginados
-        $posts =    Post::whereIn('user_id', $ids)->latest()->paginate(20);
+        $posts = Post::whereIn('user_id', $ids)->latest()->paginate(20);
 
         // Retornar la vista 'home' con los posts obtenidos
         return view('home', ['posts' => $posts]);
