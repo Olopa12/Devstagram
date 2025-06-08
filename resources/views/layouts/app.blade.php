@@ -8,6 +8,8 @@
         <title>DevStagram - @yield('titulo')</title>
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
+
+        @livewireStyles
     </head>
     <body>
         <!-- --------------------------------------------------------- -->
@@ -87,6 +89,7 @@
         <!-- Scripts externos y stacks personalizados -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @stack('scripts')
+        @livewireScripts
     </body>
 
 </html>

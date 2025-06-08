@@ -8,9 +8,17 @@ use Illuminate\View\Component;
 
 class ListarPost extends Component
 {
-    public $posts;
     /**
-     * Create a new component instance.
+     * Colección de posts que se mostrarán en el componente.
+     *
+     * @var mixed
+     */
+    public $posts;
+    
+    /**
+     * Crea una nueva instancia del componente ListarPost.
+     *
+     * @param mixed $posts  Colección de publicaciones a pasar al componente
      */
     public function __construct($posts)
     {
@@ -18,7 +26,9 @@ class ListarPost extends Component
     }
 
     /**
-     * Get the view / contents that represent the component.
+     * Obtiene la vista que representa el componente.
+     *
+     * @return View|Closure|string  La vista Blade o contenido renderizado
      */
     public function render(): View|Closure|string
     {
