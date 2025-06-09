@@ -12,6 +12,8 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BusquedaController;
 
 // Página principal
 Route::get('/', HomeController::class)->name('home')->middleware('auth');
@@ -38,7 +40,6 @@ Route::middleware('auth')->group(function() {
 // ——————————————————————————
 // Posts
 // ——————————————————————————
-Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index');
 Route::middleware('auth')->group(function () {
     Route::get('/posts/create', [PostController::class, 'create'])
         ->name('post.create');
@@ -74,3 +75,10 @@ Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('
 Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
 Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
 
+// ——————————————————————————
+// BUscar usuarios
+// ——————————————————————————
+Route::get('/buscar', [BusquedaController::class, 'index'])->name('buscar.usuarios');
+
+// Mostrar todos los posts de un usuario, usando su username en la URL
+Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index');

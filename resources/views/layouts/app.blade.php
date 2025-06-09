@@ -35,6 +35,9 @@
                            Crear
                         </a>
 
+                        <!-- Formulario de búsqueda de usuarios -->
+                        @livewire('buscar-usuarios')
+
                         <!-- Enlace a perfil de usuario -->
                         <a class="font-bold text-gray-600 text-sm" 
                         href="{{ route('post.index', auth()->user()->username) }}">

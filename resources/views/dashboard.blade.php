@@ -13,8 +13,12 @@
             {{-- Imagen de perfil --}}
             <div class="w-8/12 lg:w-6/12 px-5">
                 <img src="{{ 
-                    $user->imagen ? asset('perfiles') . '/' . $user->imagen :  asset('img/usuario.svg') }}" 
-                    alt="imagen usuario"/>
+                    $user->imagen 
+                        ? asset('perfiles') . '/' . $user->imagen 
+                        :  asset('img/usuario.svg') }}" 
+                    alt="imagen usuario"
+                    class="rounded-full"
+                    />
             </div>
 
             {{-- Datos y botones --}}
